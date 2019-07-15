@@ -1,0 +1,107 @@
+.banner-content {
+    background: url(../../assets/img/header-image.png) center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    position: relative;
+    min-height: 90vh;
+    font-family: 'Nunito', sans-serif;
+}
+
+.layer {
+    min-height: 90vh;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.banner-info-top {
+    padding-top: 18em;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.banner-info-top h3 {
+    font-size: 60px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.banner-info-bottom p {
+    padding-top: 20px;
+    color: #fff;
+    font-size: 30px;
+}
+
+.banner-btn {
+    background-color: #2D9CDB;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 57px;
+    border-radius: 50px;
+    margin-top: 3.5em;
+    border: none;
+    margin-bottom: 20px
+}
+
+.banner-btn img {
+    display: block;
+    margin: auto;
+}
+
+.bounce {
+    position: fixed;
+    animation: bounce 1s infinite;
+    left: 50%;
+    margin-left: -24px;
+}
+
+@keyframes bounce {
+    0% {
+        margin-top: 5px;
+    }
+    25%, 75% {
+        margin-top: 15px;
+    }
+    50% {
+        margin-top: 20px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .main-content, .layer {
+        min-height: 90vh;
+    }
+    .main-content.page-inner {
+        min-height: 15em;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .main-content, .layer {
+        min-height: 47em;
+    }
+    .banner-info-w3layouts {
+        padding-top: 19em;
+    }
+    .footer-top p {
+        padding-right: 2em;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .banner-info-w3layouts {
+        padding-top: 17.5em;
+    }
+    .main-content, .layer {
+        min-height: 45em;
+    }
+    .footer-top p {
+        padding-right: 0em;
+    }
+}
