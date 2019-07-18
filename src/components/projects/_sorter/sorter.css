@@ -1,0 +1,57 @@
+.sort-head {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.heading {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;    
+}
+
+.sort-by {
+    border: solid #2D9CDB 1px;
+    /* box-sizing: border-box; */
+    border-radius: 5px 0px 0px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-by p {
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.sort-option {
+    border: solid #2D9CDB 1px;
+    /* box-sizing: border-box; */
+    background-color: #2D9CDB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-option-end {
+    border: solid #2D9CDB 1px;
+    /* box-sizing: border-box; */
+    background-color: #2D9CDB;
+    border-radius: 0px 5px 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-option p, .sort-option-end p {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.sort-option span, .sort-option-end span {
+    color: #ffffff;
+    font-size: 40px;
+    margin-left: 10px;
+}

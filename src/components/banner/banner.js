@@ -21,7 +21,7 @@ const banner = () => (
                     SEE PROJECTS
                 </Button>
                 <div className="bounce">
-                    <img src={caret} />
+                    <img src={caret} alt="caret" />
                 </div>
 
             </div>

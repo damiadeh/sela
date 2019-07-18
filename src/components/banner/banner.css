@@ -52,7 +52,7 @@
 }
 
 .bounce {
-    position: fixed;
+    position: absolute;
     animation: bounce 1s infinite;
     left: 50%;
     margin-left: -24px;
