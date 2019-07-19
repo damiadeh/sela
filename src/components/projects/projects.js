@@ -8,7 +8,7 @@ class Projects extends Component {
         return (
             <div className="project-container">
                 <Sorter />
-                <ProjectBox />
+                <ProjectBox  details={this.props.showDetails}/>
             </div>
         )
     }

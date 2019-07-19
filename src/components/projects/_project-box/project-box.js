@@ -25,7 +25,7 @@ const projectBox = (props) => (
 
                 <div className="project-brief">
                     <p>
-                        The people of Ikorodu have long sought for a solution to the perennial water crisis plaguing the community. Help came when community members took action and decided to solve the problem...<span className="read-more">Read more</span>
+                        The people of Ikorodu have long sought for a solution to the perennial water crisis plaguing the community. Help came when community members took action and decided to solve the problem...<span onClick={props.details} className="read-more">Read more</span>
                     </p>
                 </div>
                 <div className="divider"></div>
