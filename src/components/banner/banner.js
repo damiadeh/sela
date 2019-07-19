@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Header from './_header/header';
-import Button from '../useables/button';
+import Button from '../useables/button/button';
 import caret from '../../assets/img/down-icon.png';
 import './banner.css';
 
@@ -10,7 +10,6 @@ const banner = () => (
         <div className="layer">
             <Header />
             <div class="container text-center" style={{ width: "100%" }}>
-                {/* <!-- /banner --> */}
                 <div className="banner-info-top">
                     <h3>Keep track of development projects near you</h3>
                 </div>
@@ -26,7 +25,6 @@ const banner = () => (
 
             </div>
         </div>
-        {/* <!-- //banner --> */}
     </div>
 );
 

@@ -71,6 +71,10 @@
     font-weight: 500;
 }
 
+.read-more:hover {
+    cursor: pointer;
+}
+
 .divider {
     width: 100%;
     margin: 10px auto;
@@ -110,4 +114,8 @@
     font-weight: 500;
     float: right;
     margin-top: 20px;
+}
+
+.more-details:hover{
+    cursor: pointer;
 }

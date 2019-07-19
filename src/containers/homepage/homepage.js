@@ -4,6 +4,7 @@ import SearchLocation from '../../components/search-location/search-location';
 import Projects from '../../components/projects/projects';
 import Modal from '../../components/modal/modal';
 import ProjectDetails from '../../components/projects/project-details';
+import './homepage.css';
 
 class Homepage extends Component {
     state = {
@@ -27,6 +28,9 @@ class Homepage extends Component {
                 <Banner />
                 <SearchLocation />
                 <Projects showDetails={this.showProjectDetails} />
+                <div onClick={() => this.props.history.push("/add")} className="add-project">
+                    <span className="fa fa-plus"></span>
+                </div>
             </Fragment>
         );
     }

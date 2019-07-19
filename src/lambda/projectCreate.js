@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import db from './db';
-import Project from '../models/project.model';
+import db from './server';
+import Project from './projectModel';
 
 exports.handler = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
             },
             response = {
                 msg: "Project successfully created",
-                data: project
+                data: project,
             }
 
         await Project.create(project)

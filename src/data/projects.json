@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Construction of Houses",
+        "city": "Yaba",
+        "state": "Lagos",
+        "details": "Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
+        "status": 30,
+        "budget": 4000000
+    },
+    {
+        "id": 2,
+        "name": "Main Bridge of Houses",
+        "city": "Lekki",
+        "state": "Lagos",
+        "details": " It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and lettersLorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
+        "status": 60,
+        "budget": 6000000
+    },
+    {
+        "id": 3,
+        "name": "Greytower Houses",
+        "city": "Wuse",
+        "state": "Abuja",
+        "details": "y a part of a Latin text by the classical author and philosopher Cicero. Its words and lettersLorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. have been changed by addition or removal, so to deliberately render ity a part of a Latin text by the classical author and philosopher Cicero. Its words and lettersLorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. have been changed by addition or removal, so to deliberately render itnt or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
+        "status": 0,
+        "budget": 7000000
+    },
+    {
+        "id": 4,
+        "name": "Railway of construction",
+        "city": "Victori Island",
+        "state": "Lagos",
+        "details": "s. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render iLorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
+        "status": 50,
+        "budget": 4000000
+    },
+    {
+        "id": 5,
+        "name": "MakanaLan of Houses",
+        "city": "Yaba",
+        "state": "Lagos",
+        "details": "Lt tool for mock-ups. It helps to outline the visual elements of a document or pre rem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lot tool for mock-ups. It helps to outline the visual elements of a document or prerem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
+        "status": 30,
+        "budget": 9000000
+    }
+]

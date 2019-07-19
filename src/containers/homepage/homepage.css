@@ -1,0 +1,22 @@
+.add-project {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    right: 40px;
+    bottom: 40px;
+    position: fixed;
+    background-color: #2D9CDB;
+}
+
+.add-project span {
+    font-size: 30px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.add-project:hover {
+    cursor: pointer;
+}
