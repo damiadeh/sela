@@ -32,7 +32,7 @@
         "city": "Victori Island",
         "state": "Lagos",
         "details": "s. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render iLorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
-        "status": 50,
+        "status": 8,
         "budget": 4000000
     },
     {
@@ -41,7 +41,16 @@
         "city": "Yaba",
         "state": "Lagos",
         "details": "Lt tool for mock-ups. It helps to outline the visual elements of a document or pre rem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lot tool for mock-ups. It helps to outline the visual elements of a document or prerem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
-        "status": 30,
+        "status": 100,
         "budget": 9000000
+    },
+    {
+        "id": 6,
+        "name": "Sela House Construction",
+        "city": "Onike",
+        "state": "Lagos",
+        "details": "Lt tool for mock-ups. It helps to outline the visual elements of a document or pre rem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lot tool for mock-ups. It helps to outline the visual elements of a document or prerem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anym",
+        "status": 80,
+        "budget": 7000000
     }
 ]

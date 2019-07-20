@@ -4,6 +4,7 @@ import ProjectBox from './_project-box/project-box';
 import './projects.css';
 
 class Projects extends Component {
+
     render() {
         return (
             <div className="project-container">
