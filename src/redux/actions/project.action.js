@@ -62,19 +62,20 @@ export const fetchProjects = () => {
             .then(res => {
                 res.json();
             })
-            .then(response => {
-                console.log(response.msg)
-                const projectData = [];
-                const projects = response.data;
-                if(projects){
-                    projects.forEach(project => {
-                        const projectProps = util.setProjectProps(project)
-                        projectData.push(projectProps)
-                    })
-                }
-                dispatch(fetchingProjectsSuccess(projectData));
-                dispatch(dispatchClearResponse());
-            })
+            .then(response => console.log(response.msg))
+            //     {
+            //     console.log(response.msg)
+            //     const projectData = [];
+            //     const projects = response.data;
+            //     if(projects){
+            //         projects.forEach(project => {
+            //             const projectProps = util.setProjectProps(project)
+            //             projectData.push(projectProps)
+            //         })
+            //     }
+            //     dispatch(fetchingProjectsSuccess(projectData));
+            //     dispatch(dispatchClearResponse());
+            // })
             .catch((err) => {
                 console.log('Error retrieving projects: ', err);
                 dispatch(fetchingProjectsFailed("Something went wrong!!!"));
@@ -84,35 +85,33 @@ export const fetchProjects = () => {
 
 export const addProject = (data) => {
     return dispatch => {
-        // dispatch(addProjectStart());
-        // fetch('/.netlify/functions/projectCreate', {
-        //     method: 'post',
-        //     body: JSON.stringify(data)
-        // })
-        //     .then((res) => {
-        //         res.json();
-        //         console.log(res.json());
-        //         console.log("Success");
-                
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //         dispatch(addProjectFailed('Adding project failed'))
-        //     })
+        dispatch(addProjectStart());
+        fetch('/.netlify/functions/projectCreate', {
+            method: 'post',
+            body: JSON.stringify(data)
+        })
+            .then((res) =>  res.json())
+            .catch((err) => console.log(err))
 
-        util.postItem('projectCreate', data)
-      .then(response => {
+    //     util.postItem('projectCreate', data)
+    //   .then(response => {
 
-        console.log("projectCreate");
-        console.log(response.msg);
-        console.log(response.data);
-        dispatch(addProjectSuccess());
-      
-        
-        
-      })
-      .catch(err => console.log('Product.create API error: ', err))
+    //     console.log("projectCreate");
+    //     console.log(response.msg);
+    //     console.log(response.data);
+    //     dispatch(addProjectSuccess());
+         
+    //   })
+    //   .catch(err => console.log('Product.create API error: ', err))
 
+    //   export const postItem = (source, data) => {
+    //     return fetch('/.netlify/functions/' + source, {
+    //         method: 'post',
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(res => res.json())
+    //         .catch(err => err)
+    // }
 
     }
 }

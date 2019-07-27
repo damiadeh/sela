@@ -17,18 +17,6 @@ const schema = new mongoose.Schema({
         required: [true, 'State field is required'],
         max: 15
     },
-    projectImageUrl: {
-        type: String,
-    },
-    contractorImageUrl1: {
-        type: String,
-    },
-    contractorImageUrl2: {
-        type: String,
-    },
-    contractorImageUrl3: {
-        type: String,
-    },
     details: {
         type: String,
         required: [true, 'Please provide project details'],

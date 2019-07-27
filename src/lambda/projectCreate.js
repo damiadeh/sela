@@ -10,10 +10,6 @@ exports.handler = async (event, context) => {
             name = data.name,
             city = data.city,
             state = data.state,
-            projectImageUrl = data.projectImageUrl,
-            contractorImageUrl1 = data.contractorImageUrl1,
-            contractorImageUrl2 = data.contractorImageUrl2,
-            contractorImageUrl3 = data.contractorImageUrl3,
             details = data.details,
             status = parseInt(data.status),
             budget = parseInt(data.budget),
@@ -23,30 +19,39 @@ exports.handler = async (event, context) => {
                 name: name,
                 city: city,
                 state: state,
-                projectImageUrl: projectImageUrl,
-                contractorImageUrl1: contractorImageUrl1,
-                contractorImageUrl2: contractorImageUrl2,
-                contractorImageUrl3: contractorImageUrl3,
                 details: details,
                 status: status,
                 budget: budget,
                 __v: 0
             },
-            response = {
-                msg: "Project successfully created",
-                data: project,
+            project2 = {
+                budget: "20000000",
+                city: "Ikeja",
+                details: "lorem ipsam jyul.bIt helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render iLorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or compreh",
+                name: "New construction",
+                state: "Kaduna",
+                status: "34",
             }
+        response = {
+            msg: "Project successfully created",
+            data: project,
+        }
 
-        await Project.create(project)
+        await Project.create(project2);
         return {
             statusCode: 201,
-            body: JSON.stringify(response)
+            body: JSON.stringify({
+                msg: "Project successfully created",
+                data: project,
+            }),
+            // body: JSON.stringify({msg :"Hello nigga"})
         }
     } catch (err) {
         console.log('project.create', err)
         return {
             statusCode: 500,
             body: JSON.stringify({ msg: err.message })
+            // body: JSON.stringify({msg :"Hello nigga"})
         }
     }
 }
