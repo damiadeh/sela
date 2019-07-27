@@ -11,6 +11,8 @@ import flutter from '../../../assets/img/c-flutter.png';
 import head from '../../../assets/img/c-head.png';
 import arrow from '../../../assets/img/forward-icon.png';
 
+
+
 var projectImage = projectImage2;
 var statusColor;
 var statusMessage;

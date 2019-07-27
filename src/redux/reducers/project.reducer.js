@@ -25,9 +25,11 @@ const reducer = (state = initialState, action) => {
         case (actionTypes.FETCHING_PROJECTS_START):
             return updateObject(state, { FetchingProject: true });
         case (actionTypes.FETCHING_PROJECTS_SUCCESS):
-            return updateObject(state, {project: action.data, FetchingProject: false });
+            return updateObject(state, { project: action.data, FetchingProject: false });
         case (actionTypes.FETCHING_PROJECTS_FAILED):
             return updateObject(state, { FetchingProject: false });
+        case (actionTypes.RESET_PROJECT_STATE):
+            return updateObject(state, { responseType: 0 });
         default:
             return state;
     }

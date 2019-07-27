@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import Sorter from './_sorter/sorter';
-import ProjectBox from './_project-box/project-box';
+//import ProjectBox from './_project-box/project-box';
 import './projects.css';
+
+const ProjectBox = React.lazy(() => import('./_project-box/project-box'));
 
 class Projects extends Component {
 
@@ -9,7 +11,9 @@ class Projects extends Component {
         return (
             <div className="project-container">
                 <Sorter />
-                <ProjectBox  details={this.props.showDetails}/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <ProjectBox  details={this.props.showDetails}/>
+                </Suspense>
             </div>
         )
     }

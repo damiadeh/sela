@@ -36,6 +36,7 @@ class Homepage extends Component {
                 <Banner />
                 <SearchLocation />
                 <Projects showDetails={this.showProjectDetails} />
+                
                 <div onClick={() => this.props.history.push("/add")} className="add-project">
                     <span className="fa fa-plus"></span>
                 </div>

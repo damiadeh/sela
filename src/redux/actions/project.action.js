@@ -1,10 +1,9 @@
 import * as actionTypes from './actionTypes';
 import * as util from '../utility';
 
-export const addProjectSuccess = (message) => {
+export const addProjectSuccess = () => {
     return {
         type: actionTypes.ADD_PROJECT_SUCCESS,
-        message: message,
     };
 };
 
@@ -41,6 +40,13 @@ export const fetchingProjectsFailed = (message) => {
     };
 };
 
+export const resetProjectState = () => {
+    return {
+        type: actionTypes.RESET_PROJECT_STATE,
+    }
+}
+
+//TODO : display success/error response and clear after 7 seconds
 export const clearResponse = () => {
     return {
         type: actionTypes.CLEAR_RESPONSE,
@@ -51,7 +57,7 @@ export const dispatchClearResponse = () => {
     return dispatch => {
         setTimeout(() => {
             dispatch(clearResponse());
-        }, 4000);
+        }, 7000);
     };
 };
 
@@ -62,7 +68,9 @@ export const fetchProjects = () => {
             .then(res => {
                 res.json();
             })
-            .then(response => console.log(response.msg))
+            .then(response => {
+                console.log(response.msg);
+            })
             //     {
             //     console.log(response.msg)
             //     const projectData = [];
@@ -90,28 +98,11 @@ export const addProject = (data) => {
             method: 'post',
             body: JSON.stringify(data)
         })
-            .then((res) =>  res.json())
-            .catch((err) => console.log(err))
-
-    //     util.postItem('projectCreate', data)
-    //   .then(response => {
-
-    //     console.log("projectCreate");
-    //     console.log(response.msg);
-    //     console.log(response.data);
-    //     dispatch(addProjectSuccess());
-         
-    //   })
-    //   .catch(err => console.log('Product.create API error: ', err))
-
-    //   export const postItem = (source, data) => {
-    //     return fetch('/.netlify/functions/' + source, {
-    //         method: 'post',
-    //         body: JSON.stringify(data)
-    //     })
-    //         .then(res => res.json())
-    //         .catch(err => err)
-    // }
-
+            .then((res) => res.json())
+            .then(() =>  dispatch(addProjectSuccess()))
+            .catch((err) => {
+                console.log(err);
+                dispatch(addProjectFailed('Adding project failed'))
+            })
     }
 }

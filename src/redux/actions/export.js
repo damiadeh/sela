@@ -1,4 +1,5 @@
 export {
     fetchProjects,
-    addProject
+    addProject,
+    resetProjectState
 } from './project.action';

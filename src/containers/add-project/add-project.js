@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import Button from '../../components/useables/button/button';
 import './add-project.css';
 import '../../components/useables/input/input.css';
@@ -19,7 +19,7 @@ class AddProject extends Component {
             budget: ""
         },
         touched: false,
-        inValidStatus: true,
+        inValidStatus: false,
         formIsValid: false,
     }
 
@@ -27,114 +27,109 @@ class AddProject extends Component {
         if (!this.state.touched) this.setState({ touched: true });
         const newProject = { ...this.state.newProject },
             name = e.target.name,
-            value = e.target.type === e.target.value;
-        if (name == "status" || name == "budget") {
-            if (!pattern.test(value)) {
-                return;
-            }
-        }
+            value = e.target.type === 'number' ? parseInt(e.target.value) : e.target.value;
         newProject[name] = value;
 
-        this.setState({ newProject }, () => this.checkValidation());
+        this.setState({ newProject: newProject }, () => this.checkValidation());
     }
 
     submitFormHandler = (event) => {
+
         event.preventDefault();
+        // const newProject = { ...this.state.newProject };
         // const formData = {};
         // for (let formElementIdentifier in this.state.addForm) {
         //     formData[formElementIdentifier] = this.state.addForm[formElementIdentifier].value;
         // }
-        // this.props.postProject(formData);
-
         console.log(this.state.newProject);
-        //this.props.onOrderBurger(order, this.props.token);
+        this.props.postProject(this.state.newProject);
     }
 
     checkValidation = () => {
         let isValid = true;
-        let inputName = {...this.state.newProject}
-        parseInt(inputName.status) >= 100  ? this.setState({inValidStatus: true}) : this.setState({inValidStatus: false});
-        console.log(inputName)
-        for(var prop of inputName.values){
-            if (prop == "") isValid = false;
-        }
-        this.setState({ formIsValid: isValid });
-    }
+        let inputName = { ...this.state.newProject };
 
+        // console.log(inputName)
+        for (var prop in inputName) {
+            if (inputName[prop] == "") isValid = false;
+        }
+
+        this.setState({ formIsValid: isValid }, () => console.log(this.state.newProject));
+    }
 
 
     render() {
 
         let form = (
-            <form onSubmit={this.submitFormHandler}>
-                {/* {formElementArray.map(formElement => (
-                    <Input
-                        key={formElement.id}
-                        label={formElement.config.label}
-                        elementType={formElement.config.elementType} 
-                        elementConfig={formElement.config.elementConfig} 
-                        value={formElement.config.value}
-                        invalid={!formElement.config.valid}
-                        shouldValidate={formElement.config.validation}
-                        touched={formElement.config.touched}
-                        changed={(event) => this.inputChangedHandler(event, formElement.id)} />
-                ))} */}
-                {this.state.touched && !this.state.formIsValid ? <i className="text-center text-danger">-Please fill all fields below</i> : null}
-                {this.state.touched && !this.state.inValidStatus ? <i className="text-center text-danger">-Status can't be more than 100</i> : null}
-
-                <div className="input">
-                    <label className="label">Project Name*</label>
-                    <input className="inputElement" name='name' type='string' onChange={this.handleInputChange} />
-                </div>
-
-                <div className="input">
-                    <label className="label">City*</label>
-                    <select className="inputElement" name="city" itemType="string" onChange={this.handleInputChange}>
-                        <option value="">select city...</option>
-                        <option value="Ikeja">Ikeja</option>
-                        <option value="Magodo">Magodo</option>
-                        <option value="Lekki">Lekki</option>
-                        <option value="Yaba">Yaba</option>
-                    </select>
-                </div>
-
-                <div className="input">
-                    <label className="label" >State*</label>
-                    <select className="inputElement" name="state" itemType="string" onChange={this.handleInputChange}>
-                        <option value="">select state...</option>
-                        <option value="Lagos">Lagos</option>
-                        <option value="Abuja">Abuja</option>
-                        <option value="Ondo">Ondo</option>
-                        <option value="Anambra">Anambra</option>
-                    </select>
-                </div>
-
-                <div className="input">
-                    <label className="label">Enter project details*</label>
-                    <textarea className="inputElement" rows="4" cols="6" name="details" typeof="string" />
-                </div>
-
-                <div className="input">
-                    <label className="label">Project Status*</label>
-                    <input className="inputElement" name='status' type='number' onChange={this.handleInputChange} />
-                </div>
-
-                <div className="input">
-                    <label className="label">Project Budget*</label>
-                    <input className="inputElement" name='budget' type='number' onChange={this.handleInputChange} />
-                </div>
-
-                <Button btnStyle="btn button btn-primary" disabled={!this.state.formIsValid && this.state.inValidStatus}>ADD +</Button>
-                <Link to="/">Back to Homepage</Link>
-            </form>
-        );
-
-        return (
             <div className="addForm">
                 <h4>Add Project</h4>
-                {form}
+                <form onSubmit={this.submitFormHandler}>
+                    {this.state.touched && !this.state.formIsValid ? <i className="text-center text-danger">-Please fill all fields below</i> : null}
+                    {/* {this.state.inValidStatus ? <i className="text-center text-danger">- Status can't be more than 100</i> : null} */}
+
+                    <div className="input">
+                        <label className="label">Project Name*</label>
+                        <input className="inputElement" name='name' type='string' onChange={this.handleInputChange} />
+                    </div>
+
+                    <div className="input">
+                        <label className="label">City*</label>
+                        <select className="inputElement" name="city" itemType="string" onChange={this.handleInputChange}>
+                            <option value="">select city...</option>
+                            <option value="Ikeja">Ikeja</option>
+                            <option value="Magodo">Magodo</option>
+                            <option value="Lekki">Lekki</option>
+                            <option value="Yaba">Yaba</option>
+                        </select>
+                    </div>
+
+                    <div className="input">
+                        <label className="label" >State*</label>
+                        <select className="inputElement" name="state" itemType="string" onChange={this.handleInputChange}>
+                            <option value="">select state...</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Abuja">Abuja</option>
+                            <option value="Ondo">Ondo</option>
+                            <option value="Anambra">Anambra</option>
+                        </select>
+                    </div>
+
+                    <div className="input">
+                        <label className="label">Enter project details*</label>
+                        <textarea className="inputElement" rows="4" cols="6" name="details" type="string" onChange={this.handleInputChange} />
+                    </div>
+
+                    <div className="input">
+                        <label className="label">Project Status*</label>
+                        <input className="inputElement" name='status' type='number' onChange={this.handleInputChange} />
+                    </div>
+
+                    <div className="input">
+                        <label className="label">Project Budget*</label>
+                        <input className="inputElement" name='budget' type='number' onChange={this.handleInputChange} />
+                    </div>
+
+                    {this.props.addingProject ? <button disabled style={{ cursor: "not-allowed" }} className="btn btn-default">Processing ...</button> : <Button btnStyle="btn button btn-primary" disabled={!this.state.formIsValid}>ADD +</Button>}
+                    <Link to="/">Back to Homepage</Link>
+                </form>
             </div>
         );
+
+        if(this.props.responseType == 1){
+            // let initialProject = {
+            //     name: "",
+            //     state: "",
+            //     city: "",
+            //     details: "",
+            //     status: "",
+            //     budget: ""
+            // };
+            // this.setState({newProject: initialProject});
+            this.props.resetState();
+            form = <Redirect to="/" />
+        }
+
+        return form;
     }
 }
 
@@ -148,7 +143,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        postProject: (project) => dispatch(projectActions.addProject(project))
+        postProject: (project) => dispatch(projectActions.addProject(project)),
+        resetState: () => dispatch(projectActions.resetProjectState()),
     };
 };
 
