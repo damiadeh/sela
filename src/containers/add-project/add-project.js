@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
 import Button from '../../components/useables/button/button';
 import './add-project.css';
 import '../../components/useables/input/input.css';
 import Input from '../../components/useables/input/input';
-import { connect } from 'react-redux';
 import * as projectActions from '../../redux/actions/export';
 
 const pattern = /^\d+$/;

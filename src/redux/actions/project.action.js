@@ -63,14 +63,10 @@ export const dispatchClearResponse = () => {
 
 export const fetchProjects = () => {
     return dispatch => {
-        dispatch(fetchingProjectsStart())
+        // dispatch(fetchingProjectsStart())
         fetch('/.netlify/functions/projectRead')
-            .then(res => {
-                res.json();
-            })
-            .then(response => {
-                console.log(response.msg);
-            })
+            .then(res => res.json())
+            .then(response => dispatch(fetchingProjectsSuccess(response.data)))
             //     {
             //     console.log(response.msg)
             //     const projectData = [];
