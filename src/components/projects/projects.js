@@ -11,7 +11,12 @@ class Projects extends Component {
     render() {
         return (
             <div className="project-container">
-                <Sorter />
+                <Sorter 
+                show={this.props.showOptions}
+                toggleOptions={this.props.toggle}
+                fetch={this.props.fetchProjects}
+                descending={this.props.sortDescending}
+                ascending={this.props.sortAscending} />
                 <Suspense fallback={<Loader activity="Loading Projects..." />}>
                     <ProjectBox  details={this.props.showDetails}/>
                 </Suspense>

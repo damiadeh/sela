@@ -46,6 +46,12 @@ export const resetProjectState = () => {
     }
 }
 
+export const clearProjects = () => {
+    return {
+        type: actionTypes.CLEAR_PROJECTS
+    }
+}
+
 //TODO : display success/error response and clear after 7 seconds
 export const clearResponse = () => {
     return {
@@ -67,21 +73,34 @@ export const fetchProjects = () => {
         fetch('/.netlify/functions/projectRead')
             .then(res => res.json())
             .then(response => dispatch(fetchingProjectsSuccess(response.data)))
-            //     {
-            //     console.log(response.msg)
-            //     const projectData = [];
-            //     const projects = response.data;
-            //     if(projects){
-            //         projects.forEach(project => {
-            //             const projectProps = util.setProjectProps(project)
-            //             projectData.push(projectProps)
-            //         })
-            //     }
-            //     dispatch(fetchingProjectsSuccess(projectData));
-            //     dispatch(dispatchClearResponse());
-            // })
             .catch((err) => {
                 console.log('Error retrieving projects: ', err);
+                dispatch(fetchingProjectsFailed("Something went wrong!!!"));
+            })
+    }
+}
+
+export const fetchSortedProjectsDesc = () => {
+    return dispatch => {
+        dispatch(fetchingProjectsStart())
+        fetch('/.netlify/functions/projectSortDesc')
+            .then(res => res.json())
+            .then(response => dispatch(fetchingProjectsSuccess(response.data)))
+            .catch((err) => {
+                console.log('Error retrieving sort projects: ', err);
+                dispatch(fetchingProjectsFailed("Something went wrong!!!"));
+            })
+    }
+}
+
+export const fetchSortedProjectsAsc = () => {
+    return dispatch => {
+        dispatch(fetchingProjectsStart())
+        fetch('/.netlify/functions/projectSortAsc')
+            .then(res => res.json())
+            .then(response => dispatch(fetchingProjectsSuccess(response.data)))
+            .catch((err) => {
+                console.log('Error retrieving sort projects: ', err);
                 dispatch(fetchingProjectsFailed("Something went wrong!!!"));
             })
     }

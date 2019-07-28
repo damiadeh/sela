@@ -57,7 +57,6 @@
 }
 
 .sum-project-content {
-
     padding: 33px 20px;
 }
 
@@ -108,7 +107,6 @@
     font-weight: 400;
 }
 
-
 .more-details {
     font-size: 20px;
     font-weight: 500;
@@ -116,6 +114,31 @@
     margin-top: 20px;
 }
 
-.more-details:hover{
+.more-details:hover {
     cursor: pointer;
+}
+
+/* Pagination css */
+
+.paginate-numbers {
+    list-style: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.paginate-numbers>li {
+    margin-right: 0.3em;
+    color: #4d4d4d;
+    user-select: none;
+    cursor: pointer;
+    background-color: #c4c4c4;
+    padding: 5px 8px;
+    border-radius: 50px
+}
+
+.pagination-i {
+    display: block;
+    width: 100%;
+    margin-top: 40px;
 }
