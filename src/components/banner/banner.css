@@ -6,44 +6,46 @@
     -ms-background-size: cover;
     background-size: cover;
     position: relative;
-    min-height: 90vh;
+    height: 100vh;
+    width: 100%;
     font-family: 'Nunito', sans-serif;
 }
 
 .layer {
-    min-height: 90vh;
+    height: 100vh;
+    width: 100%;
     background: rgba(0, 0, 0, 0.7);
 }
 
 .banner-info-top {
-    padding-top: 18em;
+    padding-top: 70%;
     text-align: center;
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 
 .banner-info-top h3 {
-    font-size: 60px;
+    font-size: 30px;
     color: #fff;
     font-weight: bold;
 }
 
 .banner-info-bottom p {
-    padding-top: 20px;
+    padding-top: 10px;
     color: #fff;
-    font-size: 30px;
+    font-size: 16px;
 }
 
 .banner-btn {
     background-color: #2D9CDB;
-    font-size: 30px;
+    font-size: 16px;
     font-weight: bold;
     color: #ffffff;
-    padding: 10px 57px;
+    padding: 10px 25px;
     border-radius: 50px;
-    margin-top: 3.5em;
+    margin-top: 1.5em;
     border: none;
-    margin-bottom: 20px
+    margin-bottom: 30px
 }
 
 .banner-btn img {
@@ -55,7 +57,11 @@
     position: absolute;
     animation: bounce 1s infinite;
     left: 50%;
-    margin-left: -24px;
+    margin-left: -10px;
+}
+
+.bounce img {
+    width: 25px
 }
 
 @keyframes bounce {
@@ -73,35 +79,37 @@
     }
 }
 
-@media screen and (max-width: 1440px) {
-    .main-content, .layer {
-        min-height: 90vh;
+@media (min-width: 600px) {
+    .bounce img {
+        width: 48px
     }
-    .main-content.page-inner {
-        min-height: 15em;
+    .bounce {
+        margin-left: -24px;
     }
-}
 
-@media screen and (max-width: 1366px) {
-    .main-content, .layer {
-        min-height: 47em;
+    .banner-content {
+        height: 90vh;
     }
-    .banner-info-w3layouts {
-        padding-top: 19em;
+    .layer {
+        height: 90vh;
     }
-    .footer-top p {
-        padding-right: 2em;
+    .banner-info-top {
+        padding-top: 18em;
+        width: 80%;
     }
-}
-
-@media screen and (max-width: 1080px) {
-    .banner-info-w3layouts {
-        padding-top: 17.5em;
+    .banner-info-top h3 {
+        font-size: 60px;
     }
-    .main-content, .layer {
-        min-height: 45em;
+    .banner-info-bottom p {
+        padding-top: 20px;
+        font-size: 30px;
     }
-    .footer-top p {
-        padding-right: 0em;
+    .banner-btn {
+        font-size: 30px;
+        font-weight: bold;
+        padding: 10px 57px;
+        border-radius: 50px;
+        margin-top: 3.5em;
+        margin-bottom: 20px
     }
 }

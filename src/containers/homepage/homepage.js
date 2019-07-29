@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Projects from '../../components/projects/projects';
 import * as projectActions from '../../redux/actions/export'
 import Modal from '../../components/modal/modal';
+import Footer from '../../components/footer/footer';
 import ProjectSummary from '../../components/projects/project-details';
 import './homepage.css';
 
@@ -64,6 +65,7 @@ class Homepage extends Component {
                     sortDescending={this.sortDesc}
                     sortAscending={this.sortAsc}
                 />
+                <Footer />
 
                 <div onClick={() => this.props.history.push("/add")} className="add-project">
                     <span className="fa fa-plus"></span>

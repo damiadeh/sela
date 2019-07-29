@@ -1,8 +1,18 @@
 .project-container{
-    padding: 20px 88px;
+    padding: 15px 20px;
 }
 
 .project-boxes {
-    margin-top: 40px;
+    margin-top: 20px;
+}
+
+@media (min-width: 600px) {
+    .project-container{
+        padding: 20px 88px;
+    }
+    
+    .project-boxes {
+        margin-top: 40px;
+    }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import * as projectActions from '../../../redux/actions/export';
 import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 //import ProjectData from '../../../data/projects.json'
 import './project-box.css';
 import Loader from '../../useables/preloader/preloader';
@@ -102,15 +103,26 @@ class ProjectBox extends Component {
 
                     return (
                         <div className="project-box">
-                            <div className="be-inline proj-img-container" style={{ backgroundImage: "url(" + projectImage + ")" }}>
-                                <div className="text-center" style={{ backgroundColor: `${statusColor}`, padding: "7px 10px", display: "inline-block", borderRadius: "7px 0 7px 0" }}><span style={{ color: "#ffffff" }}>{statusMessage}</span></div>
-                                <div class="progress" style={{ width: "80%", height: "28px", margin: "320px auto 0 auto", bottom: "10px", }}>
-                                    <div class="progress-bar" role="progressbar" style={{ width: `${project.status}%`, backgroundColor: "#2D9CDB" }} aria-valuenow={project.status} aria-valuemin="0" aria-valuemax="100"><span style={{ position: "absolute", marginLeft: `${project.status < 50 ? 100 : 40}px`, color: `${project.status < 50 ? 'black' : '#ffffff'}` }}>{project.status}% completed</span></div>
+                            <MediaQuery query="(min-device-width: 600px)">
+                                <div className="be-inline proj-img-container" style={{ backgroundImage: "url(" + projectImage + ")" }}>
+                                    <div className="text-center" style={{ backgroundColor: `${statusColor}`, padding: "7px 10px", display: "inline-block", borderRadius: "7px 0 7px 0" }}><span style={{ color: "#ffffff" }}>{statusMessage}</span></div>
+                                    <div class="progress prog-stat">
+                                        <div class="progress-bar" role="progressbar" style={{ width: `${project.status}%`, backgroundColor: "#2D9CDB" }} aria-valuenow={project.status} aria-valuemin="0" aria-valuemax="100"><span style={{ position: "absolute", marginLeft: `${project.status < 50 ? 100 : 40}px`, color: `${project.status < 50 ? 'black' : '#ffffff'}` }}>{project.status}% completed</span></div>
+                                    </div>
                                 </div>
-                            </div>
+                            </MediaQuery>
+                            <MediaQuery query="(max-device-width: 599px)">
+                                <div className="be-inline proj-img-container" style={{ backgroundImage: "url(" + projectImage + ")", height: 200 }}>
+                                    <div className="text-center" style={{ backgroundColor: `${statusColor}`, padding: "4px 7px", display: "inline-block", borderRadius: 7 }}><span style={{ color: "#ffffff", fontSize: "10px" }}>{statusMessage}</span></div>
+                                    <div class="progress prog-stat-2" style={{ margin: `${statusMessage == "On track to be completed" ? '80% auto' : '95% auto'}` }}>
+                                        <div class="progress-bar" role="progressbar" style={{ width: `${project.status}%`, backgroundColor: "#2D9CDB" }} aria-valuenow={project.status} aria-valuemin="0" aria-valuemax="100"><span style={{ position: "absolute", display: "flex", alignContent: "center", justifyContent: "center", color: 'black' }}>{project.status}% completed</span></div>
+                                    </div>
+                                </div>
+                            </MediaQuery>
+
 
                             <div className="project-content be-inline">
-                                <h2>{project.name}</h2>
+                                <p className="project-name">{project.name}</p>
                                 <div>
                                     <p className="add-cost"> <span style={{ marginRight: 25 }}><img src={location} alt="L" /> {project.city}, {project.state}</span> <span><img src={money} alt="L" /> Budget: ${utils.formatAmount(project.budget)}</span></p>
                                 </div>
@@ -120,16 +132,40 @@ class ProjectBox extends Component {
                                         {utils.wordTrimmer(project.details, 210, "...")}{project.details.length > 210 ? <span onClick={() => this.props.details(project)} className="read-more">Read more</span> : null}
                                     </p>
                                 </div>
-                                <div className="divider"></div>
-                                <h3>Contractors</h3>
-                                <div>
-                                    <span className="contractor-img"><img src={head} alt="C" /></span>
-                                    <span className="contractor-img"><img src={flutter} alt="C" /></span>
-                                    <span className="contractor-img"><img src={amazon} alt="C" /></span>
-                                    <p className="more-details" onClick={() => this.props.details(project)}>View more details <img src={arrow} alt="C" /></p>
+                                <div className="project-brief-mobile">
+                                    <p>
+                                        {utils.wordTrimmer(project.details, 100, "...")}{project.details.length > 100 ? <span onClick={() => this.props.details(project)} className="read-more">Read more</span> : null}
+                                    </p>
                                 </div>
+                                <MediaQuery query="(min-device-width: 600px)">
+                                    <div className="divider"></div>
+                                    <p className="project-contractor">Contractors</p>
+                                    <div>
+                                        <span className="contractor-img"><img src={head} alt="C" /></span>
+                                        <span className="contractor-img"><img src={flutter} alt="C" /></span>
+                                        <span className="contractor-img"><img src={amazon} alt="C" /></span>
+                                        <p className="more-details" onClick={() => this.props.details(project)}>View more details <img src={arrow} alt="C" /></p>
+                                    </div>
+                                </MediaQuery>
                             </div>
+                            <MediaQuery query="(max-device-width: 599px)">
+                                <div className="clearfix"></div>
+                                <div style={{marginTop: "-20px"}}>
+                                    <div className="divider"></div>
+                                    <div className="be-inline">
+                                        <p className="project-contractor be-inline ml-3">Contractors</p>
+                                        <div style={{ float: "right", marginRight: 12}}>
+                                            <span className="contractor-img"><img src={head} alt="C" /></span>
+                                            <span className="contractor-img"><img src={flutter} alt="C" /></span>
+                                            <span className="contractor-img"><img src={amazon} alt="C" /></span>
+                                        </div>
+                                        <p className="more-details" style={{marginRight: 18}} onClick={() => this.props.details(project)}>View more details <img src={arrow} alt="C" /></p>
+                                    </div>
+                                </div>
+
+                            </MediaQuery>
                         </div>
+
                     );
 
                 })
@@ -142,10 +178,10 @@ class ProjectBox extends Component {
         return (
             <Fragment>
                 {projectBox}
-<div className="clearfix"></div>
+                <div className="clearfix"></div>
                 {this.props.projects.length ?
                     <div className="pagination-i">
-                        <ul className="paginate-numbers">
+                        <ul className="paginate-numbers" >
                             {renderPageNumbers}
                         </ul>
                     </div> : null}
