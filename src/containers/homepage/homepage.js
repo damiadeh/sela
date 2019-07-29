@@ -20,6 +20,7 @@ class Homepage extends Component {
             budget: ""
         },
         showSortBudget: false,
+        currentLoad: "all",
     }
 
     closeDetails = () => {
@@ -35,16 +36,22 @@ class Homepage extends Component {
     }
 
     fetchProjectsAll = () => {
+        if(this.state.currentLoad === "all") return;
+        this.setState({currentLoad : "all"});
         this.props.refreshProject();
         this.props.fetchProjects();
     }
 
     sortDesc = () => {
+        if(this.state.currentLoad === "desc") return;
+        this.setState({currentLoad : "desc"});
         this.props.refreshProject();
         this.props.fetchProjectsDesc();
     }
 
     sortAsc = () => {
+        if(this.state.currentLoad === "asc") return;
+        this.setState({currentLoad : "asc"});
         this.props.refreshProject();
         this.props.fetchProjectsAsc();
     }

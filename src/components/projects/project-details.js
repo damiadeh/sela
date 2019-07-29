@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as utils from '../../redux/utility';
 import './_project-box/project-box.css';
 import projectImage from '../../assets/img/image.png';

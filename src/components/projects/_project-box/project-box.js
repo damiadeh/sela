@@ -23,13 +23,17 @@ var statusMessage;
 //Pagination logic is done here
 class ProjectBox extends Component {
     state = {
-        //todos: ['a','b','c','d','e','f','g','h','i','j','k'],
         currentPage: 1,
         projectsPerPage: 8
     }
 
     componentDidMount() {
-        this.props.fetchProjects();
+        if(this.props.responseType === 1 && this.props.projects.length && this.props.projects.length > 1){
+            this.props.resetState();
+        }else{
+            this.props.refreshProject();
+            this.props.fetchProjects();
+        }
     }
 
     handleClick = (event) => {
@@ -59,8 +63,7 @@ class ProjectBox extends Component {
                     <li
                         key={number}
                         id={number}
-                        onClick={this.handleClick}
-                    >
+                        onClick={this.handleClick}>
                         {number}
                     </li>
                 );
@@ -102,27 +105,27 @@ class ProjectBox extends Component {
 
 
                     return (
-                        <div className="project-box">
+                        <div className="project-box" key={index}>
                             <MediaQuery query="(min-device-width: 600px)">
                                 <div className="be-inline proj-img-container" style={{ backgroundImage: "url(" + projectImage + ")" }}>
                                     <div className="text-center" style={{ backgroundColor: `${statusColor}`, padding: "7px 10px", display: "inline-block", borderRadius: "7px 0 7px 0" }}><span style={{ color: "#ffffff" }}>{statusMessage}</span></div>
-                                    <div class="progress prog-stat">
-                                        <div class="progress-bar" role="progressbar" style={{ width: `${project.status}%`, backgroundColor: "#2D9CDB" }} aria-valuenow={project.status} aria-valuemin="0" aria-valuemax="100"><span style={{ position: "absolute", marginLeft: `${project.status < 50 ? 100 : 40}px`, color: `${project.status < 50 ? 'black' : '#ffffff'}` }}>{project.status}% completed</span></div>
+                                    <div className="progress prog-stat">
+                                        <div className="progress-bar" role="progressbar" style={{ width: `${project.status}%`, backgroundColor: "#2D9CDB" }} aria-valuenow={project.status} aria-valuemin="0" aria-valuemax="100"><span style={{ position: "absolute", marginLeft: `${project.status < 50 ? 100 : 40}px`, color: `${project.status < 50 ? 'black' : '#ffffff'}` }}>{project.status}% completed</span></div>
                                     </div>
                                 </div>
                             </MediaQuery>
                             <MediaQuery query="(max-device-width: 599px)">
                                 <div className="be-inline proj-img-container" style={{ backgroundImage: "url(" + projectImage + ")", height: 200 }}>
                                     <div className="text-center" style={{ backgroundColor: `${statusColor}`, padding: "4px 7px", display: "inline-block", borderRadius: 7 }}><span style={{ color: "#ffffff", fontSize: "10px" }}>{statusMessage}</span></div>
-                                    <div class="progress prog-stat-2" style={{ margin: `${statusMessage == "On track to be completed" ? '80% auto' : '95% auto'}` }}>
-                                        <div class="progress-bar" role="progressbar" style={{ width: `${project.status}%`, backgroundColor: "#2D9CDB" }} aria-valuenow={project.status} aria-valuemin="0" aria-valuemax="100"><span style={{ position: "absolute", display: "flex", alignContent: "center", justifyContent: "center", color: 'black' }}>{project.status}% completed</span></div>
+                                    <div className="progress prog-stat-2" style={{ margin: `${statusMessage == "On track to be completed" ? '80% auto' : '95% auto'}` }}>
+                                        <div className="progress-bar" role="progressbar" style={{ width: `${project.status}%`, backgroundColor: "#2D9CDB" }} aria-valuenow={project.status} aria-valuemin="0" aria-valuemax="100"><span style={{ position: "absolute", textAlign: "center", color: 'black', marginLeft: "3%"}}>{project.status}% completed</span></div>
                                     </div>
                                 </div>
                             </MediaQuery>
 
 
                             <div className="project-content be-inline">
-                                <p className="project-name">{project.name}</p>
+                                <p className="project-name">{utils.wordTrimmer(project.name, 32, "...")}</p>
                                 <div>
                                     <p className="add-cost"> <span style={{ marginRight: 25 }}><img src={location} alt="L" /> {project.city}, {project.state}</span> <span><img src={money} alt="L" /> Budget: ${utils.formatAmount(project.budget)}</span></p>
                                 </div>
@@ -194,12 +197,15 @@ const mapStateToProps = state => {
     return {
         projects: state.project.projects,
         fetchingProject: state.project.FetchingProject,
+        responseType: state.project.responseType,
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchProjects: () => dispatch(projectActions.fetchProjects()),
+        refreshProject: () => dispatch(projectActions.clearProjects()),
+        resetState: () => dispatch(projectActions.resetProjectState()),
     };
 };
 

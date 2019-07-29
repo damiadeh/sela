@@ -6,7 +6,7 @@ exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   
   try {
-    const projects = await Project.find().sort({ budget: 1 }),
+    const projects = await Project.find().sort({ budget: 1 }).limit(16),
           response = {
             msg: "Projects successfully found",
             data: projects
@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
     }
     
   } catch (err) {
-    console.log('product.Sort Descending',err) 
+    console.log('product.Sort Ascending',err) 
     return {
       statusCode: 500,
       body: JSON.stringify({msg: err.message})

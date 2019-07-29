@@ -6,7 +6,7 @@ exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   
   try {
-    const projects = await Project.find(),
+    const projects = await Project.find().limit(16),
           response = {
             msg: "Projects successfully found",
             data: projects

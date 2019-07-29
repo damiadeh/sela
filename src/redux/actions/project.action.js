@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import * as util from '../utility';
 
 export const addProjectSuccess = () => {
     return {
@@ -69,8 +68,20 @@ export const dispatchClearResponse = () => {
 
 export const fetchProjects = () => {
     return dispatch => {
-        // dispatch(fetchingProjectsStart())
         fetch('/.netlify/functions/projectRead')
+            .then(res => res.json())
+            .then(response => dispatch(fetchingProjectsSuccess(response.data)))
+            .then(() => dispatch(fetchProjectsOthers()))
+            .catch((err) => {
+                console.log('Error retrieving projects: ', err);
+                dispatch(fetchingProjectsFailed("Something went wrong!!!"));
+            })
+    }
+}
+
+export const fetchProjectsOthers = () => {
+    return dispatch => {
+        fetch('/.netlify/functions/projectReadOthers')
             .then(res => res.json())
             .then(response => dispatch(fetchingProjectsSuccess(response.data)))
             .catch((err) => {
@@ -82,8 +93,22 @@ export const fetchProjects = () => {
 
 export const fetchSortedProjectsDesc = () => {
     return dispatch => {
-        dispatch(fetchingProjectsStart())
+        // dispatch(fetchingProjectsStart())
         fetch('/.netlify/functions/projectSortDesc')
+            .then(res => res.json())
+            .then(response => dispatch(fetchingProjectsSuccess(response.data)))
+            .then(() => dispatch(fetchSortedProjectsDescOthers()))
+            .catch((err) => {
+                console.log('Error retrieving sort projects: ', err);
+                dispatch(fetchingProjectsFailed("Something went wrong!!!"));
+            })
+    }
+}
+
+export const fetchSortedProjectsDescOthers = () => {
+    return dispatch => {
+        // dispatch(fetchingProjectsStart())
+        fetch('/.netlify/functions/projectSortDescOthers')
             .then(res => res.json())
             .then(response => dispatch(fetchingProjectsSuccess(response.data)))
             .catch((err) => {
@@ -95,8 +120,22 @@ export const fetchSortedProjectsDesc = () => {
 
 export const fetchSortedProjectsAsc = () => {
     return dispatch => {
-        dispatch(fetchingProjectsStart())
+        // dispatch(fetchingProjectsStart())
         fetch('/.netlify/functions/projectSortAsc')
+            .then(res => res.json())
+            .then(response => dispatch(fetchingProjectsSuccess(response.data)))
+            .then(() => dispatch(fetchSortedProjectsAscOthers()))
+            .catch((err) => {
+                console.log('Error retrieving sort projects: ', err);
+                dispatch(fetchingProjectsFailed("Something went wrong!!!"));
+            })
+    }
+}
+
+export const fetchSortedProjectsAscOthers = () => {
+    return dispatch => {
+        // dispatch(fetchingProjectsStart())
+        fetch('/.netlify/functions/projectSortAscOthers')
             .then(res => res.json())
             .then(response => dispatch(fetchingProjectsSuccess(response.data)))
             .catch((err) => {
@@ -114,6 +153,7 @@ export const addProject = (data) => {
             body: JSON.stringify(data)
         })
             .then((res) => res.json())
+            .then(response => dispatch(fetchingProjectsSuccess([response.data])))
             .then(() =>  dispatch(addProjectSuccess()))
             .catch((err) => {
                 console.log(err);

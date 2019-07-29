@@ -1,0 +1,33 @@
+footer {
+    margin: 30px 0 20px 0;
+}
+
+.footer-line {
+    width: 90%;
+    margin: 10px auto;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.footer-text p{
+    margin: 20px auto;
+    font-size: 20px;
+    color:  rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 600px) {
+    footer {
+        margin: 100px 0 30px 0;
+    }
+    
+    .footer-line {
+        width: 90%;
+        margin: 10px auto;
+        height: 2px;
+    }
+    
+    .footer-text p{
+        margin-top: 40px;
+        font-size: 24px;
+    }
+}

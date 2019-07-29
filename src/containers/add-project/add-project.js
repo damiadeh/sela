@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Button from '../../components/useables/button/button';
 import './add-project.css';
 import '../../components/useables/input/input.css';
-import Input from '../../components/useables/input/input';
 import * as projectActions from '../../redux/actions/export';
 
 const pattern = /^\d+$/;
@@ -36,12 +35,7 @@ class AddProject extends Component {
     submitFormHandler = (event) => {
 
         event.preventDefault();
-        // const newProject = { ...this.state.newProject };
-        // const formData = {};
-        // for (let formElementIdentifier in this.state.addForm) {
-        //     formData[formElementIdentifier] = this.state.addForm[formElementIdentifier].value;
-        // }
-        console.log(this.state.newProject);
+        // console.log(this.state.newProject);
         this.props.postProject(this.state.newProject);
     }
 
@@ -53,6 +47,7 @@ class AddProject extends Component {
         for (var prop in inputName) {
             if (inputName[prop] == "") isValid = false;
         }
+        //TODO: do more validation on status
 
         this.setState({ formIsValid: isValid }, () => console.log(this.state.newProject));
     }
@@ -64,7 +59,7 @@ class AddProject extends Component {
             <div className="addForm">
                 <h4>Add Project</h4>
                 <form onSubmit={this.submitFormHandler}>
-                    {this.state.touched && !this.state.formIsValid ? <i className="text-center text-danger">-Please fill all fields below</i> : null}
+                    {this.state.touched && !this.state.formIsValid ? <i className="text-center text-danger">-Please fill all fields below correctly, Enter status not more than 100</i> : null}
                     {/* {this.state.inValidStatus ? <i className="text-center text-danger">- Status can't be more than 100</i> : null} */}
 
                     <div className="input">
@@ -125,7 +120,7 @@ class AddProject extends Component {
             //     budget: ""
             // };
             // this.setState({newProject: initialProject});
-            this.props.resetState();
+            //this.props.resetState();
             form = <Redirect to="/" />
         }
 
@@ -144,7 +139,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         postProject: (project) => dispatch(projectActions.addProject(project)),
-        resetState: () => dispatch(projectActions.resetProjectState()),
+        
     };
 };
 
